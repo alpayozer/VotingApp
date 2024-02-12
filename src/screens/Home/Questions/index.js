@@ -4,6 +4,7 @@ import { useSubscription } from "@apollo/client";
 import { GET_QUESTIONS_SUBSCRIPTION } from "./queries";
 import List from "./List";
 import Loading from "../../../components/Loading";
+import EmptyList from "../../../components/EmptyList";
 
 const Questions = () => {
   const { loading, data, error } = useSubscription(GET_QUESTIONS_SUBSCRIPTION);
@@ -17,7 +18,11 @@ const Questions = () => {
   console.log("data", data);
   return (
     <View>
-      <List data={data.questions} />
+      {data.questions.length > 0 ? (
+        <List data={data.questions} />
+      ) : (
+        <EmptyList message={"No surveys yet."} />
+      )}
     </View>
   );
 };
