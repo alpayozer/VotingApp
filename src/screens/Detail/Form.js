@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Radio } from "native-base";
 import { useMutation } from "@apollo/client";
 import { NEW_ANSWER_MUTATION } from "./queries";
+import { auth } from "../../auth";
 
 const Form = ({ options, setIsVoted }) => {
   const [selected, setSelected] = useState("");
@@ -16,6 +17,7 @@ const Form = ({ options, setIsVoted }) => {
     await newAnswer({
       variables: {
         option_id: selected,
+        user_id: auth.currentUser?.uid,
       },
     });
 
