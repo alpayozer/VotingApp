@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Text, View } from "react-native";
 import Questions from "./Questions";
-import AddButton from "../../components/AddButton";
+import IconButton from "../../components/IconButton";
 import AddNewModal from "./Questions/AddNewModal";
 
 const Home = ({ navigation }) => {
@@ -10,7 +10,16 @@ const Home = ({ navigation }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <AddButton onPress={() => setModalVisible((prev) => !prev)} />
+        <IconButton
+          icon_name={"add-outline"}
+          onPress={() => setModalVisible((prev) => !prev)}
+        />
+      ),
+      headerLeft: () => (
+        <IconButton
+          icon_name={"person-circle-outline"}
+          onPress={() => navigation.navigate("Profile")}
+        />
       ),
     });
   }, [navigation]);

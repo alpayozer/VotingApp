@@ -4,9 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //pages
 import Home from "./screens/Home";
-import AddButton from "./components/AddButton";
+import AddButton from "./components/IconButton";
 import Detail from "./screens/Detail";
 import Login from "./screens/Login";
+import Profile from "./screens/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,10 +18,11 @@ const Router = () => {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Questions" }}
+          options={{ title: "Questions", headerTitleAlign: "center" }}
         />
         <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
