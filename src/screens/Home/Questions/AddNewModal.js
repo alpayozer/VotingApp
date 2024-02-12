@@ -1,4 +1,3 @@
-import { View, Text, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { Box, Button, Heading, Input, useToast } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -67,7 +66,7 @@ const AddNewModal = ({ closeModal }) => {
         </Heading>
         {options.map((item, index) => (
           <Input
-            placeholder="Enter your question here"
+            placeholder="Enter a new option"
             fontSize={18}
             borderColor="#686565"
             mb={1}
