@@ -1,10 +1,9 @@
-import { View, Text } from "react-native";
 import React, { useState } from "react";
 import { Box, Button, Radio } from "native-base";
 import { useMutation } from "@apollo/client";
 import { NEW_ANSWER_MUTATION } from "./queries";
 
-const Form = ({ options }) => {
+const Form = ({ options, setIsVoted }) => {
   const [selected, setSelected] = useState("");
 
   const [newAnswer, { loading }] = useMutation(NEW_ANSWER_MUTATION);
@@ -19,6 +18,8 @@ const Form = ({ options }) => {
         option_id: selected,
       },
     });
+
+    setIsVoted(true);
   };
 
   return (
