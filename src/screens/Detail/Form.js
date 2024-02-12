@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { NEW_ANSWER_MUTATION } from "./queries";
 import { auth } from "../../auth";
 
-const Form = ({ options, setIsVoted }) => {
+const Form = ({ options, setIsVoted, id }) => {
   const [selected, setSelected] = useState("");
 
   const [newAnswer, { loading }] = useMutation(NEW_ANSWER_MUTATION);
@@ -18,6 +18,7 @@ const Form = ({ options, setIsVoted }) => {
       variables: {
         option_id: selected,
         user_id: auth.currentUser?.uid,
+        question_id: id,
       },
     });
 

@@ -3,6 +3,7 @@ import { Box, Button, Heading, Input, useToast } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ADD_NEW_QUESTION_MUTATION } from "./queries";
 import { useMutation } from "@apollo/client";
+import { auth } from "../../../auth";
 
 const AddNewModal = ({ closeModal }) => {
   const toast = useToast();
@@ -37,6 +38,7 @@ const AddNewModal = ({ closeModal }) => {
     await AddNewQuestion({
       variables: {
         title,
+        user_id: auth.currentUser.uid,
         options: options_data,
       },
     });
